@@ -19,7 +19,7 @@ export default function LoginPage() {
       console.log(response.data);
       router.push("/profile");
     } catch (error: any) {
-      console.log("Login failed", error.message);
+      console.log("Login failed:", error.response.data.error);
     } finally {
       setLoading(false);
     }
