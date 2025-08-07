@@ -42,6 +42,7 @@ export default function LoginPage() {
         className="bg-white py-2 px-2  text-gray-900 rounded-lg"
         type="text"
         id="email"
+        autoComplete="off"
         value={user.email}
         onChange={(e) => setUser({ ...user, email: e.target.value })}
         placeholder="email"
@@ -50,7 +51,7 @@ export default function LoginPage() {
       <input
         className="bg-white py-2 px-2  text-gray-900 rounded-lg"
         type="password"
-        id="password"
+        data-id="password"
         value={user.password}
         onChange={(e) => setUser({ ...user, password: e.target.value })}
         placeholder="password"
