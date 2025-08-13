@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 export default function ResetPassword() {
   const [newPassword, setNewPassword] = useState("");
+  const [newPasswordAgain, setNewPasswordAgain] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -26,6 +27,9 @@ export default function ResetPassword() {
 
     try {
       setLoading(true);
+      if (newPassword !== newPasswordAgain) {
+        throw new Error("Both the password should match ");
+      }
       const res = await fetch("/api/users/resetpassword", {
         method: "POST",
         headers: {
@@ -60,6 +64,13 @@ export default function ResetPassword() {
         className="w-full px-3 py-2 border mb-3 rounded"
         value={newPassword}
         onChange={(e) => setNewPassword(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Enter new password again"
+        className="w-full px-3 py-2 border mb-3 rounded"
+        value={newPasswordAgain}
+        onChange={(e) => setNewPasswordAgain(e.target.value)}
       />
 
       <button
